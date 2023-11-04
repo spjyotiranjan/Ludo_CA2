@@ -1,0 +1,174 @@
+@font-face {
+  font-family: "Blanka Regular";
+  font-style: normal;
+  font-weight: normal;
+  src: local("Blanka Regular"),
+    url("./Assets/Blanka-Regular.woff") format("woff");
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+#bg-video>video{
+  /* position: ; */
+  width: 100vw;
+  /* height: 100vh; */
+
+  z-index: -1;
+}
+#bg-image>img{
+  width: 70vw;
+  z-index: 1;
+  position: absolute;
+  left: 15vw;
+  top: 5vh;
+  filter: opacity(0.1);
+  mix-blend-mode: lighten;
+}
+#bg{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  /* display: none; */
+}
+
+#content{
+  width: 100vw;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  top: 0;
+
+}
+#content>div{
+  z-index: 1;
+}
+
+/* styling logo  */
+
+.logo{
+  width: 8vw;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 0 0 2vw 2vw;
+  backdrop-filter: blur(9.5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1vw;
+  cursor: pointer;
+}
+.logo>img{
+  width: 85%;
+  height: auto;
+}
+.logo>img:hover{
+  transform: translateY(-2px);
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: 0.2s;
+}
+.logo:hover{
+  width: 8vw;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.50);
+  border-radius: 0 0 2vw 2vw;
+  backdrop-filter: blur(9.5px);
+  transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1vw;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+
+/* styling main  */
+
+
+.main>img{
+  width: 35vw;
+  height: auto;
+  filter: drop-shadow(0px 2vw 10px rgba(0, 0, 0, 0.25));
+  animation: float 5s infinite;
+}
+
+
+/* styling button  */
+
+.button{
+  width: 8vw;
+  display: flex;
+  justify-content: center;
+  bottom: 5vh;
+  filter: drop-shadow(0px 1vw 4px rgba(0, 0, 0, 0.9));
+  border-radius: 3px;
+  cursor: pointer;
+  animation-name: down;
+  animation-duration: 0.5s;
+}
+.button:hover{
+  transform: translateY(-5px);
+  transition: 0.5s;
+  transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+  filter: drop-shadow(0px 2vw 6px rgba(0, 0, 0, 0.6));
+}
+#btn-bg,#btn-fg{
+  position: absolute;
+  width: 8vw;
+  height: auto;
+}
+#btn-fg{
+  z-index: 4;
+  backdrop-filter: hue-rotate(240deg);
+  
+  -webkit-backdrop-filter: blur(9.5px);
+}
+#text-bg{
+  z-index: 2;
+  margin-top: 10%;
+  filter: blur(10px);
+  color: white;
+  opacity: 1;
+
+}
+#text-fg{
+  color: white;
+  margin-left: -50%;
+  margin-top: 10%;
+  font-family: "Blanka Regular";
+  letter-spacing: 0.3rem;
+
+}
+
+
+/* float animation */
+@keyframes float{
+  0%{
+    transform: translateY(0px);
+  }
+  50%{
+    transform: translateY(-20px);
+  }
+  100%{
+    transform: translateY(0px);
+  }
+}
+
+/* hover animation */
+@keyframes up {
+  to{transform: translateY(-5px);
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    filter: drop-shadow(0px 2vw 6px rgba(0, 0, 0, 0.6));}
+}
+@keyframes down{
+  to{transform: translateY(5px);
+    transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+    filter: drop-shadow(0px 2vw 6px rgba(0, 0, 0, 0.9));}
+}
