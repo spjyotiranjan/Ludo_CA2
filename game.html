@@ -7,12 +7,28 @@
     <link rel="stylesheet" href="./game.css">
 </head>
 <body>
-    <img id="setting-img" src="./Assets/Settings.png" alt="">
+    <img class="setting-img" src="./Assets/Settings.png" alt="">
+    <img class="instruction-img" src="./Assets/Instruction.png" alt="">
     <div id="bg">
         <div id="bg-video">
             <video autoplay loop muted>
                 <source src="./Assets/Gradient_Background_Loop.mp4" type="video/mp4">
             </video>
+        </div>
+    </div>
+    <div id="body">
+        <img class="cancel-img" src="./Assets/cancel.png" alt="">
+        <div class="instruction">
+            <h1>INSTRUCTION</h1>
+            <ol>
+                <p>Starting Pieces: First player places one piece in their starting square.</p>
+                <p>Roll to Move: Take turns rolling a die to move pieces.</p>
+                <p>Getting Out of Base: Need a 6 to start a piece or advance it.</p>
+                <p>Capture Opponent: Land on opponent's piece to send it back.</p>
+                <p>Reach the Center: Move to the center circle with exact rolls.</p>
+                <p>Winning: First to get all pieces to center circle wins.</p>
+                <p>Extra Roll on 6: Get an extra turn on rolling a 6.</p>
+            </ol>
         </div>
     </div>
     <div id="content">
@@ -23,6 +39,17 @@
             
             
             <div class="ludo-canvas">
+                <div class="playerPieces">
+                    <img class="player-piece" player-no="p1" piece-index="0" src="./Assets/Pieces/Blue.png" alt="">
+                    <img class="player-piece" player-no="p1" piece-index="1" src="./Assets/Pieces/Blue.png" alt="">
+                    <img class="player-piece" player-no="p1" piece-index="2" src="./Assets/Pieces/Blue.png" alt="">
+                    <img class="player-piece" player-no="p1" piece-index="3" src="./Assets/Pieces/Blue.png" alt="">
+                    
+                    <img class="player-piece" player-no="p2" piece-index="0" src="./Assets/Pieces/Green.png" alt="">
+                    <img class="player-piece" player-no="p2" piece-index="1" src="./Assets/Pieces/Green.png" alt="">
+                    <img class="player-piece" player-no="p2" piece-index="2" src="./Assets/Pieces/Green.png" alt="">
+                    <img class="player-piece" player-no="p2" piece-index="3" src="./Assets/Pieces/Green.png" alt="">
+                </div>
             </div>
             
             
@@ -32,9 +59,13 @@
                     <img class="player-icon" src="./Assets/Pieces/Blue.png" alt="">
                     <span class="username" id="username1">PLAYER 1</span>
                 </div>
-                <div id="dice">
-                    <img class="dice-content" id="dice-6" src="./Assets/Dice Option/6.png" alt="">
+                <div id="dice-area">
+                    <div id="dice">
+                        <!-- <img class="dice-content" src="./Assets/Dice Option/6.png" alt=""> -->
+                    </div>
+                    <button id="dice-btn"><p>Roll</p></button>
                 </div>
+           
                 <div class="playerbtn">
                     <img class="player-icon" src="./Assets/Pieces/Green.png" alt="">
                     <span class="username" id="username2">PLAYER 2</span>
@@ -43,5 +74,7 @@
             
         </div>
     </div>
+
+    <script src="./Javascript/game.js"></script>
 </body>
 </html>

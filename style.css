@@ -1,15 +1,16 @@
-@font-face {
-  font-family: "Blanka Regular";
-  font-style: normal;
-  font-weight: normal;
-  src: local("Blanka Regular"),
-    url("./Assets/Blanka-Regular.woff") format("woff");
-}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Changa&display=swap');
 
 *{
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+body{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 #bg-video>video{
   /* position: ; */
@@ -23,7 +24,7 @@
   z-index: 1;
   position: absolute;
   left: 15vw;
-  top: 5vh;
+  top: 7vh;
   filter: opacity(0.1);
   mix-blend-mode: lighten;
 }
@@ -97,6 +98,53 @@
   height: auto;
   filter: drop-shadow(0px 2vw 10px rgba(0, 0, 0, 0.25));
   animation: float 5s infinite;
+  animation-timing-function: cubic-bezier(.34,.18,.4,1);
+}
+
+/* styling instruction */
+
+#body{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(9.5px);
+}
+.instruction{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 40%;
+  height: 80%;
+  border-radius: 2vw;
+  background-color: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(9.5px);
+  box-shadow: 1px 1px 2px 0.5px  rgba(255, 255, 255, 0.466);
+  filter: drop-shadow(0px 1vw 10px rgba(0, 0, 0, 0.8));
+}
+
+p{
+  font-size: 1.2vw;
+  margin-bottom: 1vw;
+  text-align: center;
+}
+
+h1,p{
+  font-family: 'Changa', sans-serif;
+  color: white;
+}
+h1{
+  filter: drop-shadow(0px 0.5vw 5px rgba(0, 0, 0, 0.5));
+
 }
 
 
@@ -110,8 +158,6 @@
   filter: drop-shadow(0px 1vw 4px rgba(0, 0, 0, 0.9));
   border-radius: 3px;
   cursor: pointer;
-  animation-name: down;
-  animation-duration: 0.5s;
 }
 .button:hover{
   transform: translateY(-5px);
@@ -147,6 +193,38 @@
 
 }
 
+/* styling additional buttons */
+
+.speakerOn-img{
+  position: absolute;
+  width: 3vw;
+  top: 2vh;
+  right: 2vh;
+  z-index: 4;
+  display: block;
+}
+.speakerOff-img{
+  position: absolute;
+  width: 3vw;
+  top: 2vh;
+  right: 2vh;
+  z-index: 4;
+  display: none;
+}
+.instruction-img>img{
+  position: absolute;
+  width: 3vw;
+  top: 2vh;
+  left: 2vh;
+  z-index: 4;
+}
+
+.cancel-img{
+  position: absolute;
+  width: 3vw;
+  top: 2vh;
+  right: 2vh;
+}
 
 /* float animation */
 @keyframes float{
@@ -171,4 +249,54 @@
   to{transform: translateY(5px);
     transition-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
     filter: drop-shadow(0px 2vw 6px rgba(0, 0, 0, 0.9));}
+}
+
+@media screen and (max-width: 426px) {
+  #bg-video>video{
+    /* position: ; */
+    height: 100vh;
+    /* width: 50%; */
+    width: auto;
+  }
+  .logo{
+    width: 25vw;
+    border-radius: 0 0 4vw 4vw;
+  }
+  .button{
+    width: 25vw;
+  }
+  #btn-bg,#btn-fg{
+    width: 25vw;
+  }
+  #text-bg{
+    font-size: 4.5vw;
+    margin-left: 10%;
+  }
+  #text-fg{
+    font-size: 4.5vw;
+    margin-left: -50%;
+  }
+  .main>img{
+    width: 90vw;
+  }
+  #bg-image>img{
+    display: none;
+
+  }
+  .instruction{
+    width: 90%;
+    height: 55%;
+    background-color: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+    filter: none;
+  }
+  p{
+    font-size: 3.4vw;
+    margin-bottom: 2vw;
+  }
+  .speakerOn-img,.speakerOff-img,.instruction-img>img,.cancel-img{
+    width: 8vw;
+  }
+
 }

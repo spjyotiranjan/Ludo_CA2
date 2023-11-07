@@ -7,7 +7,18 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <div class="speaker">
+        <img class="speakerOn-img" src="./Assets/Speaker.png" alt="">
+        <img class="speakerOff-img" src="./Assets/Speaker-off.png" alt="">
+    </div>
+    
+    <div class="instruction-img"><img  src="./Assets/Instruction.png" alt=""></div>
     <div id="bg">
+        <div>
+            <audio id="bg-audio" autoplay loop>
+                <source src="./Assets/Ludo_BG_Music.mp3" type="audio/mp3">
+            </audio>
+        </div>
         <div id="bg-video">
             <video autoplay loop muted>
                 <source src="./Assets/Gradient_Background_Loop.mp4" type="video/mp4">
@@ -15,6 +26,21 @@
         </div>
         <div id="bg-image">
             <img src="./Assets/Ludo Board_HomePage.png" alt="">
+        </div>
+    </div>
+    <div id="body">
+        <img class="cancel-img" src="./Assets/cancel.png" alt="">
+        <div class="instruction">
+            <h1>INSTRUCTION</h1>
+            <ol>
+                <p>Starting Pieces: First player places one piece in their starting square.</p>
+                <p>Roll to Move: Take turns rolling a die to move pieces.</p>
+                <p>Getting Out of Base: Need a 6 to start a piece or advance it.</p>
+                <p>Capture Opponent: Land on opponent's piece to send it back.</p>
+                <p>Reach the Center: Move to the center circle with exact rolls.</p>
+                <p>Winning: First to get all pieces to center circle wins.</p>
+                <p>Extra Roll on 6: Get an extra turn on rolling a 6.</p>
+            </ol>
         </div>
     </div>
 
@@ -34,5 +60,9 @@
             <h2 id="text-fg">PLAY</h2>
         </div>
     </div>
+
+
+
+    <script src="./Javascript/index.js"></script>
 </body>
 </html>
