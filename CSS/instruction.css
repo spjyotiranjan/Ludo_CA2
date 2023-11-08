@@ -66,7 +66,7 @@ h1{
   height: 10vh;
   filter: contrast(0);
   filter: brightness(0);
-  filter: invert(1);
+  /* filter: invert(1); */
 }
 
 @media screen and (max-width: 431px) {

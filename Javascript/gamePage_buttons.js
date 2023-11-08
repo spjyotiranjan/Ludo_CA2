@@ -16,6 +16,7 @@ var logoOnclick = new Audio("../Assets/logoOnclick.mp3")
 var backgroundMusic = new Audio("../Assets/Ludo_BG_Music.mp3")
 
 backgroundMusic.volume = 0.2
+backgroundMusic.loop = true
 backgroundMusic.play()
 
 settingBtn.style.display = "none"

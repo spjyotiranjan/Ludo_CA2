@@ -141,6 +141,7 @@ const playerPiecesElements = {
 
 
 class DOM {
+    
     static listenDiceClick(callback) {
         diceButtonElement.addEventListener('click', callback);
     }
@@ -205,11 +206,6 @@ class DOM {
         diceButtonElement.setAttribute('disabled', '');
     }
 
-    /**
-     * 
-     * @param {string} player 
-     * @param {Number[]} pieces 
-     */
     static highlightPieces(player, pieces) {
         pieces.forEach(piece => {
             const pieceElement = playerPiecesElements[player][piece];
@@ -228,6 +224,10 @@ class DOM {
     }
 }
 
+
+
+
+// Ludo Class starts here 
 
 class Ludo {
     currentPositions = {
