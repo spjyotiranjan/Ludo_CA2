@@ -40,7 +40,7 @@
     align-items: center;
 
     width: 40%;
-    height: 80%;
+    height: 85%;
     border-radius: 2vw;
     background-color: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(9.5px);
@@ -62,8 +62,14 @@ h1{
     filter: drop-shadow(0px 0.5vw 5px rgba(0, 0, 0, 0.5));
 
 }
+#loading{
+  height: 10vh;
+  filter: contrast(0);
+  filter: brightness(0);
+  filter: invert(1);
+}
 
-@media screen and (max-width: 426px) {
+@media screen and (max-width: 431px) {
   #bg-video>video{
     /* position: ; */
     height: 100vh;
@@ -72,7 +78,7 @@ h1{
   }
   .instruction{
     width: 90%;
-    height: 55%;
+    height: 70%;
     background-color: transparent;
     backdrop-filter: none;
     box-shadow: none;

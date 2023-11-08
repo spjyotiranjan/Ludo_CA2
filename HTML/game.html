@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Page</title>
+    <link rel="stylesheet" href="../CSS/game.css">
+</head>
+<body>
+    <img class="setting-img" src="../Assets/Settings.png" alt="">
+    <img class="instruction-img" src="../Assets/Instruction.png" alt="">
+    <div id="bg">
+        <div id="bg-video">
+            <video autoplay loop muted>
+                <source src="../Assets/Gradient_Background_Loop.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    <div id="body">
+        <img class="cancel-img1" src="../Assets/cancel.png" alt="">
+        <div class="instruction">
+            <h1>INSTRUCTION</h1>
+            <ol>
+                <p>Starting Pieces: First player places one piece in their starting square.</p>
+                <p>Roll to Move: Take turns rolling a die to move pieces.</p>
+                <p>Getting Out of Base: Need a 6 to start a piece or advance it.</p>
+                <p>Capture Opponent: Land on opponent's piece to send it back.</p>
+                <p>Reach the Center: Move to the center circle with exact rolls.</p>
+                <p>Winning: First to get all pieces to center circle wins.</p>
+                <p>Extra Roll on 6: Get an extra turn on rolling a 6.</p>
+            </ol>
+        </div>
+    </div>
+    <div id="settings">
+        <img class="cancel-img2" src="../Assets/cancel.png" alt="">
+        <div class="setting">
+            <h1>Settings</h1>
+            <div id="options">
+                <!-- <div class="settingOpt" id="settingbtn-sound">
+                    <p class="option" id="option1">Disable Sound</p>
+                </div> -->
+                <div class="settingOpt" id="settingbtn-restart">
+                    <p class="option" id="option1">Restart</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="userData">
+        <div class="box">
+          <div class="first">
+            <h3>Enter First Player Name</h3>
+            <input type="text" name="" class="name" id="player1" required/>
+          </div>
+          <div class="second">
+            <h3>Enter Second Player Name</h3>
+            <input type="text" name="" class="name" id="player2" required/>
+          </div>
+          <div class="third">
+            <button class="settingOpt" id="playnow">PLAY NOW</button>
+          </div>
+        </div>
+      </div>
+    <div id="content">
+        <div class="logo">
+            <img src="../Assets/LUDO Logo.png" alt="">
+        </div>
+        <div id="canvas">
+            
+            
+            <div class="ludo-canvas">
+                <div class="playerPieces">
+                    <img class="player-piece" player-no="P1" piece-index="0" src="../Assets/Pieces/Blue.png" alt="">
+                    <img class="player-piece" player-no="P1" piece-index="1" src="../Assets/Pieces/Blue.png" alt="">
+                    <img class="player-piece" player-no="P1" piece-index="2" src="../Assets/Pieces/Blue.png" alt="">
+                    <img class="player-piece" player-no="P1" piece-index="3" src="../Assets/Pieces/Blue.png" alt="">
+                    
+                    <img class="player-piece" player-no="P2" piece-index="0" src="../Assets/Pieces/Green.png" alt="">
+                    <img class="player-piece" player-no="P2" piece-index="1" src="../Assets/Pieces/Green.png" alt="">
+                    <img class="player-piece" player-no="P2" piece-index="2" src="../Assets/Pieces/Green.png" alt="">
+                    <img class="player-piece" player-no="P2" piece-index="3" src="../Assets/Pieces/Green.png" alt="">
+                </div>
+            </div>
+            
+            
+            
+            <div id="user">
+                <div class="playerbtn" id="playerbtn-1">
+                    <img class="player-icon" src="../Assets/Pieces/Blue.png" alt="">
+                    <span class="username" id="username1"></span>
+                </div>
+                <div id="dice-area">
+                    <div id="dice">
+                        <!-- <img class="dice-content" src="./Assets/Dice Option/6.png" alt=""> -->
+                    </div>
+                    <button id="dice-btn"><p>Roll</p></button>
+                </div>
+           
+                <div class="playerbtn" id="playerbtn-2">
+                    <img class="player-icon" src="../Assets/Pieces/Green.png" alt="">
+                    <span class="username" id="username2"></span>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="../Javascript/game.js"></script>
+    <script src="../Javascript/gamePage_buttons.js"></script>
+</body>
+</html>

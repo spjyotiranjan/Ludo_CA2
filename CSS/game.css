@@ -1,10 +1,10 @@
-@font-face {
+/* @font-face {
     font-family: "Blanka Regular";
     font-style: normal;
     font-weight: normal;
     src: local("Blanka Regular"),
       url("./Assets/Blanka-Regular.woff") format("woff");
-  }
+  } */
   @import url('https://fonts.googleapis.com/css2?family=Changa&display=swap');
   
   *{
@@ -87,7 +87,7 @@
 .ludo-canvas{
     width: 35vw;
     height: 35vw;
-    background-image: url("./Assets/Ludo\ Canvas1.png");
+    background-image: url("../Assets/Ludo\ Canvas1.png");
     background-size: contain;
     padding: 1.3%;
     /* margin: 0 3vw 0 0; */
@@ -118,14 +118,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(to bottom right,rgba(2, 165, 246, 0.5),rgba(2, 147, 41, 0.5));
   backdrop-filter: blur(9.5px);
   border-radius: 1vh;
   /* border: 2px solid rgba(255, 255, 255, 0.1); */
   /* box-shadow: 1px 1px 2px 0.5px  rgba(255, 255, 255, 0.466); */
 }
+#playerbtn-1{
+  background-image: linear-gradient(to bottom right,rgba(2, 165, 246, 0.3),rgba(255, 255, 255, 0.2));
+}
+#playerbtn-2{
+  background-image: linear-gradient(to bottom right,rgba(2, 147, 41, 0.3),rgba(255, 255, 255, 0.2));
+}
+.playerbtn:hover{
+  background-color: rgba(255, 255, 255, 0.35);
+}
 .highlight-btn{
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.5);
   transition: 0.2s;
 }
 .player-icon{
@@ -136,11 +144,10 @@
 .username{
   font-family: 'Changa', sans-serif;
   color: white;
+  font-size: 100%;
 }
 
-.playerbtn:hover{
-  background-color: rgba(255, 255, 255, 0.35);
-}
+
 
 
 /* styling Dice  */
@@ -165,13 +172,14 @@
   border: none;
   width: 5vw;
   height: 5vh;
-  background-color: rgba(255, 255, 255, 0.4);
+  /* background-color: rgba(2, 165, 246, 0.6); */
+  /* background-image: linear-gradient(to bottom right,rgba(2, 147, 41, 0.5),rgba(255, 255, 255, 0.2)); */
   backdrop-filter: blur(9.5px);
   border-radius: 1vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding-top: 20%;
+  padding-top: 17%;
 }
 .dice-content{
   width: 90%;
@@ -191,12 +199,14 @@
   width: 3vw;
   top: 2vh;
   right: 2vh;
+  z-index: 6;
 }
 .instruction-img{
   position: absolute;
   width: 3vw;
   top: 2vh;
   left: 2vh;
+  z-index: 6;
 }
 
 /* styling instruction */
@@ -206,12 +216,12 @@
   width: 100vw;
   height: 100vh;
   top: 0;
-  display: flex;
+  /* display: flex; */
   justify-content: center;
   align-items: center;
   display: none;
 
-  z-index: 2;
+  z-index: 4;
   background-color: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(9.5px);
 }
@@ -225,7 +235,7 @@
   height: 80%;
   border-radius: 2vw;
   background-color: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(9.5px);
+  /* backdrop-filter: blur(9.5px); */
   box-shadow: 1px 1px 2px 0.5px  rgba(255, 255, 255, 0.466);
   filter: drop-shadow(0px 1vw 10px rgba(0, 0, 0, 0.8));
 }
@@ -243,6 +253,130 @@ h1,p{
 h1{
   filter: drop-shadow(0px 0.5vw 5px rgba(0, 0, 0, 0.5));
 
+}
+.cancel-img1{
+  position: absolute;
+  width: 3vw;
+  top: 2vh;
+  right: 2vh;
+}
+
+/* styling settings  */
+
+#settings{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  display: none;
+  
+  z-index: 4;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(9.5px);
+}
+.setting{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 20%;
+  height: 35%;
+  border-radius: 2vw;
+  background-color: rgba(255, 255, 255, 0.3);
+  /* backdrop-filter: blur(9.5px); */
+  box-shadow: 1px 1px 2px 0.5px  rgba(255, 255, 255, 0.466);
+  filter: drop-shadow(0px 1vw 10px rgba(0, 0, 0, 0.8));
+}
+#options{
+  height: 50%;
+  /* background-color: aliceblue; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.option{
+  color: black;
+  padding-top: 10%;
+}
+.settingOpt{
+  height: 3vw;
+  width: 10vw;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(9.5px);
+  border-radius: 1vh;
+  background-color: rgba(255, 255, 255, 1)
+}
+.cancel-img2{
+  position: absolute;
+  width: 3vw;
+  top: 2vh;
+  right: 2vh;
+}
+
+/* styling UserData */
+
+#userData{
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* display: none; */
+
+  z-index: 3;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(9.5px);
+}
+.box{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 20%;
+  height: 35%;
+  border-radius: 2vw;
+  margin-left: 3%;
+  background-color: rgba(255, 255, 255, 0.3);
+  /* backdrop-filter: blur(9.5px); */
+  box-shadow: 1px 1px 2px 0.5px  rgba(255, 255, 255, 0.466);
+  filter: drop-shadow(0px 1vw 10px rgba(0, 0, 0, 0.8));
+}
+.name{
+  width: 90%;
+  height: 50%;
+  filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.25));
+  border-radius: 0.5vw;
+  border: none;
+  padding-left: 10px;
+  font-family: 'Changa', sans-serif;
+
+}
+.first,.second{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 25%;
+  width: 85%;
+}
+h3{
+  color: white;
+  font-family: 'Changa', sans-serif;
+}
+#playnow{
+  background-image: linear-gradient(to bottom right,rgba(2, 165, 246, 0.5),rgba(21, 255, 0, 0.5));
+  border: none;
+  filter: drop-shadow(0px 4px 5px rgba(0, 0, 0, 0.25));
+  font-size: 100%;
+  font-family: 'Changa', sans-serif;
 }
 
 
@@ -266,7 +400,8 @@ h1{
   width: 4%;
   height: auto;
   position: absolute;
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.523));
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0));
+  
 }
 
 .highlight{
@@ -274,15 +409,20 @@ h1{
   animation: scale 0.7s infinite linear;
 }
 
+
+
 @keyframes scale{
   0%{
     transform: scale(1);
+    filter: drop-shadow(0 0 3px rgb(60, 255, 0));
   }
   50%{
     transform: scale(1.2);
+    filter: drop-shadow(0 0 2px rgb(9, 90, 203));
   }
   100%{
     transform: scale(1);
+    filter: drop-shadow(0 0 3px rgb(255, 255, 255));
   }
 }
 
@@ -329,7 +469,7 @@ h1{
   #dice-btn>p{
     font-size: 3vh;
   }
-  .setting-img,.instruction-img,.cancel-img{
+  .setting-img,.instruction-img,.cancel-img1,.cancel-img2{
     width: 8vw;
   }
   .username{
@@ -341,6 +481,29 @@ h1{
   .playerPieces{
     width: 95%;
     height: 95%;
+  }
+  .instruction{
+    width: 90%;
+    height: 55%;
+    background-color: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+    filter: none;
+  }
+  p{
+    font-size: 3.4vw;
+    margin-bottom: 2vw;
+  }
+  .setting{
+    width: 70%;
+    height: 35%;
+  }
+  .settingOpt{
+    width: 30vw;
+    height: 6vh;
+  }
+  .box{
+    width: 90%;
   }
 }
 

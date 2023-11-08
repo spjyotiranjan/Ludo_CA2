@@ -4,29 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Over</title>
-    <link rel="stylesheet" href="./gameOver.css">
+    <link rel="stylesheet" href="../CSS/gameOver.css">
 </head>
 <body>
     <div id="bg">
         <div id="bg-video">
-            <video autoplay loop muted>
-                <source src="./Assets/blue-background-video.mp4" type="video/mp4">
+            <video id="video" autoplay loop muted>
+                <!-- <source src="../Assets/blue-background-video.mp4" type="video/mp4"> -->
             </video>
         </div>
     </div>
     <div id="content">
         <div class="logo">
-            <img src="./Assets/LUDO Logo.png" alt="">
+            <img src="../Assets/LUDO Logo.png" alt="">
         </div>
         <div class="main-content">
             <h1 id="game-over">GAME OVER</h1>
-            <div id="declare"><span id="winner">PLAYER 1 </span><span id="decision">has won the Game</span></div>
+            <div id="declare"><span id="winner"></span><span id="decision">has won the Game</span></div>
             <div class="playAgain-btn">
                 <span id="play-again">PLAY AGAIN</span>
             </div>
         </div>
     </div>
 
-    <script src="./Javascript/gameOver.js"></script>
+    <script src="../Javascript/gameOver.js"></script>
 </body>
 </html>

@@ -1,247 +1,238 @@
 
-var instruction = document.getElementById("body")
-var cancel = document.querySelector(".cancel-img")
+var instruction = document.querySelector("#body")
+var cancel2 = document.querySelector(".cancel-img2")
+var settingBtn = document.querySelector(".setting-img")
+var settingPage = document.querySelector("#settings")
 var instructionBtn = document.querySelector(".instruction-img")
-var logo = document.querySelector(".logo")
+var moveSound = new Audio("../Assets/pawnMove.mp3")
+var rollSound = new Audio("../Assets/diceClick.mp3")
+var UserDataPage = document.querySelector("#userData")
+var player1 = document.querySelector("#username1")
+var player2 = document.querySelector("#username2")
+moveSound.volume = 0.1
+const COORDINATES_MAP = {
+    0: [6, 13],
+    1: [6, 12],
+    2: [6, 11],
+    3: [6, 10],
+    4: [6, 9],
+    5: [5, 8],
+    6: [4, 8],
+    7: [3, 8],
+    8: [2, 8],
+    9: [1, 8],
+    10: [0, 8],
+    11: [0, 7],
+    12: [0, 6],
+    13: [1, 6],
+    14: [2, 6],
+    15: [3, 6],
+    16: [4, 6],
+    17: [5, 6],
+    18: [6, 5],
+    19: [6, 4],
+    20: [6, 3],
+    21: [6, 2],
+    22: [6, 1],
+    23: [6, 0],
+    24: [7, 0],
+    25: [8, 0],
+    26: [8, 1],
+    27: [8, 2],
+    28: [8, 3],
+    29: [8, 4],
+    30: [8, 5],
+    31: [9, 6],
+    32: [10, 6],
+    33: [11, 6],
+    34: [12, 6],
+    35: [13, 6],
+    36: [14, 6],
+    37: [14, 7],
+    38: [14, 8],
+    39: [13, 8],
+    40: [12, 8],
+    41: [11, 8],
+    42: [10, 8],
+    43: [9, 8],
+    44: [8, 9],
+    45: [8, 10],
+    46: [8, 11],
+    47: [8, 12],
+    48: [8, 13],
+    49: [8, 14],
+    50: [7, 14],
+    51: [6, 14],
 
+    // HOME ENTRANCE
 
-instructionBtn.addEventListener("click",()=>{
-    instruction.style.display = "flex"
-    instructionBtn.style.display = "none"
-})
-cancel.addEventListener("click",()=>{
-    instructionBtn.style.display = "block"
-    instruction.style.display = "none"
-})
+    // P1
+    100: [7, 13],
+    101: [7, 12],
+    102: [7, 11],
+    103: [7, 10],
+    104: [7, 9],
+    105: [7, 8],
 
-logo.addEventListener("click",()=>{
-    window.open("./index.html","_self")
-})
+    // P2
+    200: [7, 1],
+    201: [7, 2],
+    202: [7, 3],
+    203: [7, 4],
+    204: [7, 5],
+    205: [7, 6],
 
-const Coordinates = {
-    0: [6,13],
-    1: [6,12],
-    2: [6,11],
-    3: [6,10],
-    4: [6,9],
-    5: [5,8],
-    6: [4,8],
-    7: [3,8],
-    8: [2,8],
-    9: [1,8],
-    10: [0,8],
-    11: [0,7],
-    12: [0,6],
-    13: [1,6],
-    14: [2,6],
-    15: [3,6],
-    16: [4,6],
-    17: [5,6],
-    18: [6,5],
-    19: [6,4],
-    20: [6,3],
-    21: [6,2],
-    22: [6,1],
-    23: [6,0],
-    24: [7,0],
-    25: [8,0],
-    26: [8,1],
-    27: [8,2],
-    28: [8,3],
-    29: [8,4],
-    30: [8,5],
-    31: [9,6],
-    32: [10,6],
-    33: [11,6],
-    34: [12,6],
-    35: [13,6],
-    36: [14,6],
-    37: [14,7],
-    38: [14,8],
-    39: [13,8],
-    40: [12,8],
-    41: [11,8],
-    42: [10,8],
-    43: [9,8],
-    44: [8,9],
-    45: [8,10],
-    46: [8,11],
-    47: [8,12],
-    48: [8,13],
-    49: [8,14],
-    50: [7,14],
-    51: [6,14],
+    // BASE POSITIONS
 
-// Final Steps Position 
-// Player 1
-    100: [7,13],
-    101: [7,12],
-    102: [7,11],
-    103: [7,10],
-    104: [7,9],
-    105: [7,8],
-    
-    
-// Player 2
-    200: [7,1],
-    200: [7,2],
-    200: [7,3],
-    200: [7,4],
-    200: [7,5],
-    200: [7,6],
+    // P1
+    500: [1.5, 10.58],
+    501: [3.57, 10.58],
+    502: [1.5, 12.8],
+    503: [3.57, 12.8],
 
-
-// Home Position
-// Player 1
-    500: [1.5,10.58],
-    501: [3.57,10.58],
-    502: [1.5,12.43],
-    503: [3.57,12.43],
-
-// Player 2
-    600: [10.5,1.58],
-    601: [12.54,1.58],
-    602: [10.5,3.45],
-    603: [12.54,3.45],
+    // P2
+    600: [10.5, 1.58],
+    601: [12.54, 1.58],
+    602: [10.5, 3.8],
+    603: [12.54, 3.8],
 };
 
-const StepLength = 6.66;
-const Players = ['p1','p2'];
-const StartPosition = {
-    p1: 0,
-    p2: 26,
+const STEP_LENGTH = 6.66;
+
+const PLAYERS = ['P1', 'P2'];
+
+const BASE_POSITIONS = {
+    P1: [500, 501, 502, 503],
+    P2: [600, 601, 602, 603],
 }
 
-const HomePosition = {
-    p1: [500,501,502,503],
-    p2: [600,601,602,603],
+const START_POSITIONS = {
+    P1: 0,
+    P2: 26
 }
 
-const FinalStepPosition = {
-    p1: [100,101,102,103,104],
-    p2: [200,201,202,203,204],
+const HOME_ENTRANCE = {
+    P1: [100, 101, 102, 103, 104],
+    P2: [200, 201, 202, 203, 204]
 }
 
-const WinningPosition = {
-    p1: 105,
-    p2: 205,
+const HOME_POSITIONS = {
+    P1: 105,
+    P2: 205
 }
 
-const FinalTurnPosition = {
-    p1: 50,
-    p2: 24,
+const TURNING_POINTS = {
+    P1: 50,
+    P2: 24
 }
 
-const Star = [0,8,13,21,26,34,39,47];
-const State = {
-    Dice_Not_Rolled: "Dice_Not_Rolled",
-    Dice_Rolled: "Dice_Rolled",
+const SAFE_POSITIONS = [0, 8, 13, 21, 26, 34, 39, 47];
+
+const STATE = {
+    DICE_NOT_ROLLED: 'DICE_NOT_ROLLED',
+    DICE_ROLLED: 'DICE_ROLLED',
 }
-
-
-
 var dice = document.querySelector("#dice")
-var diceBtn = document.querySelector("#dice-btn")
-var playerPieces = {
-    p1: document.querySelectorAll('[player-no="p1"].player-piece'),
-    p2: document.querySelectorAll('[player-no="p2"].player-piece')
+const diceButtonElement = document.querySelector('#dice-btn');
+const playerPiecesElements = {
+    P1: document.querySelectorAll('[player-no="P1"].player-piece'),
+    P2: document.querySelectorAll('[player-no="P2"].player-piece'),
 }
-console.log(playerPieces);
 
-// DOM Functions
 
-class DOM  {
-    static diceOnClick(funct) {
-        diceBtn.addEventListener("click", funct)
+class DOM {
+    static listenDiceClick(callback) {
+        diceButtonElement.addEventListener('click', callback);
     }
-    static pieceOnClick(funct) {
-        document.querySelector(".playerPieces").addEventListener("click", funct)
-    }
-    static resetOnClick(funct) {
+
+    static listenResetClick(callback) {
+        document.querySelector('#settingbtn-restart').addEventListener('click', callback)
         
     }
-    
-    
-    
-    static setPiecePosition(player,pieceIndex,newPosition) {
-        const [x,y] = Coordinates[newPosition]
-    
-        const pieceElement = playerPieces[player][pieceIndex]
-        pieceElement.style.top = y*StepLength+2+"%"
-        pieceElement.style.left = x*StepLength+1+"%"
+
+    static listenPieceClick(callback) {
+        document.querySelector('.playerPieces').addEventListener('click', callback)
     }
-    
-    // setPiecePosition('p1',3,50)
-    
+
+    /**
+     * 
+     * @param {string} player 
+     * @param {Number} piece 
+     * @param {Number} newPosition 
+     */
+    static setPiecePosition(player, piece, newPosition) {
+        if(!playerPiecesElements[player] || !playerPiecesElements[player][piece]) {
+            console.error(`Player element of given player: ${player} and piece: ${piece} not found`)
+            return;
+        }
+
+        const [x, y] = COORDINATES_MAP[newPosition];
+
+        const pieceElement = playerPiecesElements[player][piece];
+        pieceElement.style.top = y * STEP_LENGTH + 1 + '%';
+        pieceElement.style.left = x * STEP_LENGTH + 1 + '%';
+    }
+
     static setTurn(index) {
-        const player = Players[index]
-        var playerBtn = document.getElementsByClassName("playerbtn")
-        console.log(playerBtn);
+        if(index < 0 || index >= PLAYERS.length) {
+            console.error('index out of bound!');
+            return;
+        }
         
+        const player = PLAYERS[index];
+
+        // Display player ID
+        var playerBtn = document.getElementsByClassName("playerbtn")
         if (index==0) {
             playerBtn[1].classList.remove("highlight-btn")
             playerBtn[0].classList.add("highlight-btn")
+            diceButtonElement.style.backgroundColor = "rgba(2, 165, 246, 0.6)"
+            // diceButtonElement.style.backgroundImage = "linear-gradient(to bottom right,rgba(2, 165, 246, 0.5),rgba(255, 255, 255, 0.2))"
         } else {
             playerBtn[0].classList.remove("highlight-btn")
             playerBtn[1].classList.add("highlight-btn")
+            diceButtonElement.style.backgroundColor = "rgba(2, 147, 41, 0.6)"
+            // diceButtonElement.style.backgroundImage = "linear-gradient(to bottom right,rgba(2, 147, 41, 0.5),rgba(255, 255, 255, 0.2))"
         }
+        
     }
-    
-    // setTurn(0)
-    // setTurn(1)
-    
-    
+
     static enableDice() {
-        diceBtn.removeAttribute('disabled')
+        diceButtonElement.removeAttribute('disabled');
     }
+
     static disableDice() {
-        diceBtn.setAttribute('disabled','')
+        diceButtonElement.setAttribute('disabled', '');
     }
-    // enableDice()
-    // disableDice()
-    
-    static pieceHighlight(player,pieces) {
+
+    /**
+     * 
+     * @param {string} player 
+     * @param {Number[]} pieces 
+     */
+    static highlightPieces(player, pieces) {
         pieces.forEach(piece => {
-            const pieceElement = playerPieces[player][piece]
-            pieceElement.classList.add("highlight")
-        });
-    }
-    
-    static pieceUnHighlight() {
-        var allPiece = document.querySelectorAll(".player-piece.highlight")
-        allPiece.forEach(element =>{
-            element.classList.remove("highlight")
+            const pieceElement = playerPiecesElements[player][piece];
+            pieceElement.classList.add('highlight');
         })
     }
-    // pieceHighlight("p1",[0])
-    
-    
-    // setPiecePosition("p1", 0, 0)
-    // setPiecePosition("p1", 1, 4)
-    // setPiecePosition("p2", 1, 5)
-    
-    
+
+    static unhighlightPieces() {
+        document.querySelectorAll('.player-piece.highlight').forEach(ele => {
+            ele.classList.remove('highlight');
+        })
+    }
+
     static setDiceValue(value) {
-        dice.innerHTML = `<img class= "dice-content" src="./Assets/Dice Option/${value}.png" alt="">`
+        document.querySelector('#dice').innerHTML = `<img class="dice-content" src="../Assets/Dice Option/${value}.png" alt="">`;
     }
 }
 
-// DOM.setDiceValue(5)
-// DOM.setPiecePosition("p1",1,51)
-
-// class Logic extends DOM {
-
-// }
-
-// var x = new Logic()
-// console.log(x)
-
-// x.Dice_Rolled
 
 class Ludo {
     currentPositions = {
-        p1: [],
-        p2: []
+        P1: [],
+        P2: []
     }
 
     _diceValue;
@@ -270,9 +261,9 @@ class Ludo {
     set state(value) {
         this._state = value;
 
-        if(value === State.Dice_Not_Rolled) {
+        if(value === STATE.DICE_NOT_ROLLED) {
             DOM.enableDice();
-            DOM.pieceHighlight();
+            DOM.unhighlightPieces();
         } else {
             DOM.disableDice();
         }
@@ -285,7 +276,7 @@ class Ludo {
         // this.turn = 0;
         // this.state = STATE.DICE_ROLLED;
         this.listenDiceClick();
-        // this.listenResetClick();
+        this.listenResetClick();
         this.listenPieceClick();
 
         this.resetGame();
@@ -297,25 +288,25 @@ class Ludo {
     }
 
     listenDiceClick() {
-        DOM.diceOnClick(this.onDiceClick.bind(this))
+        DOM.listenDiceClick(this.onDiceClick.bind(this))
     }
 
     onDiceClick() {
         console.log('dice clicked!');
+        rollSound.play()
         this.diceValue = 1 + Math.floor(Math.random() * 6);
-        this.state = State.Dice_Rolled;
+        this.state = STATE.DICE_ROLLED;
         
         this.checkForEligiblePieces();
     }
 
     checkForEligiblePieces() {
-        const player = Players[this.turn];
+        const player = PLAYERS[this.turn];
         // eligible pieces of given player
         const eligiblePieces = this.getEligiblePieces(player);
-        console.log(this.getEligiblePieces(player));
         if(eligiblePieces.length) {
             // highlight the pieces
-            DOM.pieceHighlight(player, eligiblePieces);
+            DOM.highlightPieces(player, eligiblePieces);
         } else {
             this.incrementTurn();
         }
@@ -323,27 +314,27 @@ class Ludo {
 
     incrementTurn() {
         this.turn = this.turn === 0 ? 1 : 0;
-        this.state = State.Dice_Not_Rolled;
+        this.state = STATE.DICE_NOT_ROLLED;
     }
 
     getEligiblePieces(player) {
         return [0, 1, 2, 3].filter(piece => {
             const currentPosition = this.currentPositions[player][piece];
 
-            if(currentPosition === WinningPosition[player]) {
+            if(currentPosition === HOME_POSITIONS[player]) {
                 return false;
             }
 
             if(
-                HomePosition[player].includes(currentPosition)
+                BASE_POSITIONS[player].includes(currentPosition)
                 && this.diceValue !== 6
             ){
                 return false;
             }
 
             if(
-                FinalStepPosition[player].includes(currentPosition)
-                && this.diceValue > WinningPosition[player] - currentPosition
+                HOME_ENTRANCE[player].includes(currentPosition)
+                && this.diceValue > HOME_POSITIONS[player] - currentPosition
                 ) {
                 return false;
             }
@@ -352,26 +343,33 @@ class Ludo {
         });
     }
 
-    // listenResetClick() {
-    //     DOM.listenResetClick(this.resetGame.bind(this))
-    // }
+    listenResetClick() {
+        DOM.listenResetClick(this.resetGame.bind(this))
+        
+    }
 
     resetGame() {
         console.log('reset game');
-        this.currentPositions = structuredClone(HomePosition);
+        this.currentPositions = structuredClone(BASE_POSITIONS);
 
-        Players.forEach(player => {
+        PLAYERS.forEach(player => {
             [0, 1, 2, 3].forEach(piece => {
                 this.setPiecePosition(player, piece, this.currentPositions[player][piece])
             })
         });
 
         this.turn = 0;
-        this.state = State.Dice_Not_Rolled;
+        this.state = STATE.DICE_NOT_ROLLED;
+        this.diceValue = 0
+        UserDataPage.style.display = "flex"
+        settingPage.style.display = "none"
+        player1.innerHTML = ""
+        player2.innerHTML = ""
+
     }
 
     listenPieceClick() {
-        DOM.pieceOnClick(this.onPieceClick.bind(this));
+        DOM.listenPieceClick(this.onPieceClick.bind(this));
     }
 
     onPieceClick(event) {
@@ -391,13 +389,13 @@ class Ludo {
         console.log(player, piece);
         const currentPosition = this.currentPositions[player][piece];
         
-        if(HomePosition[player].includes(currentPosition)) {
-            this.setPiecePosition(player, piece, StartPosition[player]);
-            this.state = State.Dice_Not_Rolled;
+        if(BASE_POSITIONS[player].includes(currentPosition)) {
+            this.setPiecePosition(player, piece, START_POSITIONS[player]);
+            this.state = STATE.DICE_NOT_ROLLED;
             return;
         }
 
-        DOM.pieceUnHighlight();
+        DOM.unhighlightPieces();
         this.movePiece(player, piece, this.diceValue);
     }
 
@@ -406,26 +404,35 @@ class Ludo {
         DOM.setPiecePosition(player, piece, newPosition)
     }
 
+   
     movePiece(player, piece, moveBy) {
         // this.setPiecePosition(player, piece, this.currentPositions[player][piece] + moveBy)
         const interval = setInterval(() => {
             this.incrementPiecePosition(player, piece);
+            moveSound.pause()
+            moveSound.currentTime = 0
+            moveSound.play()
             moveBy--;
-
             if(moveBy === 0) {
                 clearInterval(interval);
 
                 // check if player won
                 if(this.hasPlayerWon(player)) {
-                    alert(`Player: ${player} has won!`);
-                    this.resetGame();
+                    if (player=="P1") {
+                        localStorage.setItem("Winner",player1.innerHTML)
+                        localStorage.setItem("Color","blue")
+                    } else {
+                        localStorage.setItem("Winner",player2.innerHTML)
+                        localStorage.setItem("Color","green")
+                    }
+                    window.open("../HTML/gameOver.html","_self")
                     return;
                 }
 
                 const isKill = this.checkForKill(player, piece);
 
                 if(isKill || this.diceValue === 6) {
-                    this.state = State.Dice_Not_Rolled;
+                    this.state = STATE.DICE_NOT_ROLLED;
                     return;
                 }
 
@@ -443,8 +450,8 @@ class Ludo {
         [0, 1, 2, 3].forEach(piece => {
             const opponentPosition = this.currentPositions[opponent][piece];
 
-            if(currentPosition === opponentPosition && !Star.includes(currentPosition)) {
-                this.setPiecePosition(opponent, piece, HomePosition[opponent][piece]);
+            if(currentPosition === opponentPosition && !SAFE_POSITIONS.includes(currentPosition)) {
+                this.setPiecePosition(opponent, piece, BASE_POSITIONS[opponent][piece]);
                 kill = true
             }
         });
@@ -453,7 +460,7 @@ class Ludo {
     }
 
     hasPlayerWon(player) {
-        return [0, 1, 2, 3].every(piece => this.currentPositions[player][piece] === WinningPosition[player])
+        return [0, 1, 2, 3].every(piece => this.currentPositions[player][piece] === HOME_POSITIONS[player])
     }
 
     incrementPiecePosition(player, piece) {
@@ -463,8 +470,8 @@ class Ludo {
     getIncrementedPosition(player, piece) {
         const currentPosition = this.currentPositions[player][piece];
 
-        if(currentPosition === FinalTurnPosition[player]) {
-            return FinalStepPosition[player][0];
+        if(currentPosition === TURNING_POINTS[player]) {
+            return HOME_ENTRANCE[player][0];
         }
         else if(currentPosition === 51) {
             return 0;
@@ -473,4 +480,4 @@ class Ludo {
     }
 }
 
-var ludo = new Ludo()
+const logic = new Ludo()
