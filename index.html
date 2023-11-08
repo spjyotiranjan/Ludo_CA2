@@ -7,32 +7,48 @@
     <link rel="stylesheet" href="./CSS/style.css">
 </head>
 <body>
+    <!-- Header Section -->
     <div class="speaker">
-        <img class="speakerOn-img" src="./Assets/Speaker.png" alt="">
-        <img class="speakerOff-img" src="./Assets/Speaker-off.png" alt="">
+        <!-- Speaker icons for audio control -->
+        <img class="speakerOn-img" src="./Assets/Speaker.png" alt="Speaker On">
+        <img class="speakerOff-img" src="./Assets/Speaker-off.png" alt="Speaker Off">
     </div>
     
-    <div class="instruction-img"><img  src="./Assets/Instruction.png" alt=""></div>
+    <div class="instruction-img">
+        <!-- Image for displaying instructions -->
+        <img src="./Assets/Instruction.png" alt="Instructions">
+    </div>
+
+    <!-- Background Section -->
     <div id="bg">
+        <!-- Background audio with autoplay and loop -->
         <div>
             <audio id="bg-audio" autoplay loop>
                 <source src="./Assets/Ludo_BG_Music.mp3" type="audio/mp3">
             </audio>
         </div>
+        <!-- Background video with autoplay, loop, and muted -->
         <div id="bg-video">
             <video autoplay loop muted>
                 <source src="./Assets/Gradient_Background_Loop.mp4" type="video/mp4">
             </video>
         </div>
+        <!-- Background image -->
         <div id="bg-image">
-            <img src="./Assets/Ludo Board_HomePage.png" alt="">
+            <img src="./Assets/Ludo Board_HomePage.png" alt="Ludo Board Image">
         </div>
     </div>
+
+    <!-- Main Content Section -->
     <div id="body">
-        <img class="cancel-img" src="./Assets/cancel.png" alt="">
+        <!-- Close/cancel button -->
+        <img class="cancel-img" src="./Assets/cancel.png" alt="Cancel">
+
         <div class="instruction">
+            <!-- Instructions for the game -->
             <h1>INSTRUCTION</h1>
             <ol>
+                <!-- List of game instructions -->
                 <p>Starting Pieces: First player places one piece in their starting square.</p>
                 <p>Roll to Move: Take turns rolling a die to move pieces.</p>
                 <p>Getting Out of Base: Need a 6 to start a piece or advance it.</p>
@@ -44,25 +60,28 @@
         </div>
     </div>
 
+    <!-- Content Section -->
     <div id="content">
         <div class="logo">
-            <img src="./Assets/LUDO Logo.png" alt="">
+            <!-- Logo image -->
+            <img src="./Assets/LUDO Logo.png" alt="LUDO Logo">
         </div>
     
         <div class="main">
-            <img src="./Assets/Ludo Board_HomePage.png" alt="">
+            <!-- Main content image (e.g., Ludo board) -->
+            <img src="./Assets/Ludo Board_HomePage.png" alt="Ludo Board">
         </div>
     
         <div class="button">
-            <img id="btn-bg" src="./Assets/PlayBtn/PlayBtn_BG.png" alt="">
-            <img id="btn-fg" src="./Assets/PlayBtn/PlayBtn_FG.png" alt="">
+            <!-- Play button with background and text -->
+            <img id="btn-bg" src="./Assets/PlayBtn/PlayBtn_BG.png" alt="Play Button Background">
+            <img id="btn-fg" src="./Assets/PlayBtn/PlayBtn_FG.png" alt="Play Button Foreground">
             <h2 id="text-bg">PLAY</h2>
             <h2 id="text-fg">PLAY</h2>
         </div>
     </div>
 
-
-
+    <!-- Your scripts go here -->
     <script src="../Javascript/index.js"></script>
 </body>
 </html>
